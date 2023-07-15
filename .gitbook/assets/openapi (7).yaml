@@ -1,0 +1,552 @@
+openapi: 3.0.1
+info:
+  title: test 
+  version: 1.0.1
+  description: >
+
+    Test swagger file.
+    2023.0715.0740
+
+
+tags:
+  - name: 1 Item Classes
+    description: xxxxxxxxxxx.
+  - name: 2 Items
+    description: yyyyyyyyyyyyyyyyy.
+
+paths:
+  /item-class:
+    post: 
+      summary: item-class
+      description: >-
+        item-classes description.
+      tags:
+        - 1 Item Classes
+      operationId: CreateItemClass
+      parameters:
+        - name: environment-id
+          in: header
+          description: env id.
+          style: simple
+          schema:
+            type: string
+            example: 11112222-3333-4444-5555-666677778888
+
+      requestBody: 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateItemClassRequest' 
+            example: 
+              { 
+                "itemClass": "itemClass0706",
+                "description": "itemClass0706 descr",
+                "customData": {
+                   "itemClass0706Key1": {
+                      "data": "{\"itemClass0706Key1Param1\": 11, \"itemClass0706Key1Param2\": \"String12\"}",
+                      "gameVersionId": "11112222-3333-4444-5555-666677778888"},
+                   "itemClass0706Key2": {
+                      "data": "{\"itemClass0706Key2Param1\": 21, \"itemClass0706Key2Param2\": \"String22\"}",
+                      "gameVersionId": "11112222-3333-4444-5555-666677778888" } } }
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemClassResult'
+              example:
+                { "id": "11112222-3333-4444-5555-666677778888",
+                  "itemClass": "itemClass0706",
+                  "description": "itemClass0706 descr",
+                  "customData": {
+                    "itemClass0706Key1": "{\"itemClass0706Key1Param1\": 11, \"itemClass0706Key1Param2\": \"String12\"}",
+                    "itemClass0706Key2": "{\"itemClass0706Key2Param1\": 21, \"itemClass0706Key2Param2\": \"String22\"}" } }
+
+
+ 
+  /item-class/{itemClassId}:
+    put: 
+      summary: item-class/{itemClassId}
+      description: aaaaaaaaaaa.
+      tags:
+        - 1 Item Classes
+      operationId: UpdateItemClass
+      
+      parameters:
+        - name: itemClassId
+          in: path
+          required: true
+          style: simple
+          description: Item class ID.
+          example: 11112222-3333-4444-5555-666677778888
+          schema:
+            type: string
+      
+      
+        - name: environment-id
+          in: header
+          description: env ID.
+          style: simple
+          schema:
+            type: string
+            example: 11112222-3333-4444-5555-666677778888
+ 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateItemClassRequest'
+            example:
+              { "itemClass": "envItemClass0626XYZ",
+                "description": "envItemClass0626XYZ descr",
+                "customData": {
+                   "player0306Key1": {
+                      "data": "{\"ItemClassParam1\": 111, \"ItemClassParam2\": \"String111XYZ\" }",
+                      "gameVersionId": "11112222-3333-4444-5555-666677778888" },
+                   "player0306Key3": {
+                      "data": "{\"ItemClassParam3\": 333, \"ItemClassParam4\": \"String444\" }",
+                      "gameVersionId": "11112222-3333-4444-5555-666677778888" } } }
+ 
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemClassResult'
+              example:
+                { "id": "11112222-3333-4444-5555-666677778888",
+                  "itemClass": "envItemClass0626XYZ",
+                  "description": "envItemClass0626XYZ descr",
+                  "customData": {
+                    "player0306Key1": "{\"ItemClassParam1\": 111, \"ItemClassParam2\": \"String111XYZ4\"}",
+                    "player0306Key3": "{\"ItemClassParam3\": 333, \"ItemClassParam4\": \"String444\"}"   } }
+
+              
+  /item:
+    post: 
+      summary: item
+      description: >-
+        ffffffffffffffffffffffffffffff.
+      tags:
+        - 2 Items
+      operationId: CreateItem
+      parameters:
+        - name: envid
+          in: header
+          description: env ID.
+          style: simple
+          schema:
+            type: string
+            example: 11112222-3333-4444-5555-666677778888
+            
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateItemRequest'
+            example:
+              { "itemName": "item0706",
+                "displayName": "item0706DisplayName",
+                "minGameVersion": "11112222-3333-4444-5555-666677778888",
+                "itemClassId": "11112222-3333-4444-5555-666677778888",
+                "externalId": "item0706ExtId",
+                "tags": [     "item0706Tag1"   ],
+                "consumable": "true",
+                "consumableUsageCount": 0,
+                "consumableTimespan": 0,
+                "imageUrl":  null,
+                "customData": {
+                  "item0706CDKey1": {
+                    "data": "{\"item0706CDKey1Param1\": 111, \"item0706CDKey1Param2\": \"String112\" }",
+                    "gameVersionId": "11112222-3333-4444-5555-666677778888",
+                    "ownerPermission": "3",
+                    "othersPermission": "3"     },
+                  "item0706CDKey2": {
+                    "data": "{\"item0706CDKey2Param1\": 211, \"item0706CDKey2Param2\": \"String212\" }",
+                    "gameVersionId": "11112222-3333-4444-5555-666677778888",
+                    "ownerPermission": "3",
+                    "othersPermission": "3"     },
+                  "ChainMetadata": {
+                    "data": "{\"item0706CDCMParam1\": 311, \"item0706CDCMParam2\": \"String312\" }",
+                    "gameVersionId": "11112222-3333-4444-5555-666677778888",
+                    "ownerPermission": "3",
+                    "othersPermission": "3"     }  }}
+
+
+
+      responses: 
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemResult'
+              example:
+                { "id": "11112222-3333-4444-5555-666677778888",
+                  "itemName": "item0706",
+                  "displayName": "item0706DisplayName",
+                  "externalId": "item0706ExtId",
+                  "minGameVersion": "11112222-3333-4444-5555-666677778888",
+                  "itemClassId": "11112222-3333-4444-5555-666677778888",
+                  "consumable": true,
+                  "consumableUsageCount": 0,
+                  "consumableTimespan": 0,
+                  "imageUrl": ,
+                  "customData": {
+                    "item0706CDKey1": "{\"item0706CDKey1Param1\": 111, \"item0706CDKey1Param2\": \"String112\"}",
+                    "item0706CDKey2": "{\"item0706CDKey2Param1\": 211, \"item0706CDKey2Param2\": \"String212\"}",
+                    "chainMetadata": "{\"item0706CDCMParam1\": 311, \"item0706CDCMParam2\": \"String312\"}"   }}
+
+
+                
+  /item/{itemId}:
+    get: 
+      summary: item/{itemId}
+      description: eeeeeeeeeeeeeeeeeeeee.
+      tags:
+        - 2 Items
+      operationId: GetItem
+
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          example: 11112222-3333-4444-5555-666677778888
+          description: Item ID.
+          style: simple
+          schema:
+            type: string
+
+        - name: env-id
+          in: header
+          description: env id.
+          style: simple
+          schema:
+            type: string
+            example: 11112222-3333-4444-5555-666677778888
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemResult'
+              example:
+                { "id": "11112222-3333-4444-5555-666677778888",
+                  "itemName": "item0623A",
+                  "displayName": "item0623DnameA",
+                  "externalId": "item0623ExtIdA",
+                  "minGameVersion": "11112222-3333-4444-5555-666677778888",
+                  "itemClassId": "11112222-3333-4444-5555-666677778888",
+                  "consumable": false,
+                  "consumableUsageCount": 0,
+                  "consumableTimespan": 0,
+                  "imageUrl": ,
+                  "customData": {
+                    "item0623Key1": "{
+                      \"age\": 23, 
+                      \"firstName\": \"firstName0623\", 
+                      \"lastName\": \"lastName0623\"}",
+                    "chainMetadata": "{
+                      \"traittype0623_1\": \"6231\", 
+                      \"traittype0623_2\": \"6232\" }"  }}
+            
+
+components: ############################################################################
+            ############################################################################
+            ############################################################################
+            ############################################################################
+            ############################################################################
+  schemas:
+
+  
+    CreateItemClassRequest: 
+      required:
+        - itemClass
+      type: object
+      description: Object that dddddddddddddddddddddddddd.
+      properties:
+        itemClass:
+          minLength: 1
+          type: string
+          example: itemClass0706
+          nullable: true
+          description: Item class name.
+        description:
+          type: string
+          example: itemClass0706 description
+          nullable: true
+          description: Item class description.
+        customData:
+          type: object
+          example: #TT 0711example
+            {
+              "item0706CDKey1": "{\"item0706CDKey1Param1\": 111, \"item0706CDKey1Param2\": \"String112\"}",
+              "item0706CDKey2": "{\"item0706CDKey2Param1\": 211, \"item0706CDKey2Param2\": \"String212\"}",
+              "chainMetadata": "{\"item0706CDCMParam1\": 311, \"item0706CDCMParam2\": \"String312\"}"   }
+
+          description: >-
+            Defines custom dataxxxx.
+          additionalProperties:
+            $ref: '#/components/schemas/KeyedCustomDataWithPermission'
+          nullable: true
+      additionalProperties: false
+
+
+    KeyedCustomDataWithPermission: 
+      required:
+        - gameVersionId
+      type: object
+      example: item0706CDKey1
+      description: Object ffffffffffffffffffffffffffffffff.
+      properties:
+        data:
+          type: string
+          nullable: true
+          description: Custom dffffffffffffffffffffff.
+          example: 
+            "data": "{ \"itemClass0706Key1Param1\": 11, \"itemClass0706Key1Param2\": \"String12\" }"
+
+        gameVersionId:
+          type: string
+          format: uuid
+          description: Game version ID.
+          example: 11112222-3333-4444-5555-666677778888
+        schemaId:
+          type: string
+          format: uuid
+          nullable: true
+          description: Schema ID.
+          example: 11112222-3333-4444-5555-666677778888
+        ownerPermission:
+          $ref: '#/components/schemas/CustomDataPermission'
+        othersPermission:
+          $ref: '#/components/schemas/CustomDataPermission'
+      additionalProperties: false
+
+
+    CustomDataPermission: 
+      enum:
+        - "1"
+        - "2"
+        - "3"
+      type: string
+      description: Custom data ddddddddddddd.
+      example: 3 dddddd
+
+
+    UpdateItemClassRequest: #TT 0711
+      required:
+        - itemClass
+      type: object
+      description: Object that ggggggggggggggg.
+      properties:
+        itemClass:
+          minLength: 1
+          example: itemClass0706
+          type: string
+          description: Item class name.
+        description:
+          type: string
+          nullable: true
+          example: itemClass0706 description
+          description: Item class description.
+        customData:
+          type: object
+          example: #TT 0711example
+            { item0706CDKey1: (key1Definition),
+              item0706CDKey2: (key2Definition) } 
+          description: >-
+            Defines sssssssssssssssssss.
+          additionalProperties:
+            $ref: '#/components/schemas/KeyedCustomDataWithPermission'
+          nullable: true
+      additionalProperties: false
+
+
+    ItemClassResult: #TT 0711
+      type: object
+      description: Object that wwwwwwwwwwwwwwwwwwwww.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Item class ID.
+        itemClass:
+          type: string
+          example: itemClass0706
+          nullable: true
+          description: Item class name.
+        description:
+          type: string
+          example: itemClass0706 description
+          nullable: true
+          description: Item class description.
+        customData:
+          type: object
+          example: #TT 0711example
+            { item0706CDKey1: (key1Definition),
+              item0706CDKey2: (key2Definition) } 
+          additionalProperties:
+            type: string
+          nullable: true
+          description: >-
+            Item class aaaaaaaaaaaaaaaaaaaa.
+      additionalProperties: false
+
+
+
+    CreateItemRequest:
+      required:
+        - displayName
+        - itemClassId
+        - itemName
+        - minGameVersion
+      type: object
+      description: Request to create item.
+      properties:
+        itemName:
+          minLength: 1
+          type: string
+          example: item0706
+          description: Item name.
+        displayName:
+          minLength: 1
+          example: item0706DisplayName  
+          type: string
+          description: Item display xxxxxxxxxxxxxxxxxxxxxxx.
+        minGameVersion:
+          type: string
+          format: uuid
+          example: 292d6d0f-e689-4aef-ae52-6e632a229098
+          description: Minimum game version.
+        itemClassId:
+          type: string
+          example: 11112222-3333-4444-5555-666677778888
+          format: uuid
+          description: Item class ID.
+        externalId:
+          type: string
+          example: item0706ExtId
+          nullable: true
+          description: Item xxxxxxxxxxxx.
+        tags:
+          type: array
+          example: [ item0706Tag1 ]
+          items:
+            type: string
+          nullable: true
+          description: Array of tags associated with item.
+        consumable:
+          type: boolean
+          description: >-
+            True = xxxxxxxxxxxxxxxxxxxxxx.
+        consumableUsageCount:
+          type: integer
+          format: int64
+          description: How many jjjjjjjjjjjjjjjjjjjj.
+        consumableTimespan:
+          type: integer
+          example: 50000
+          format: int64
+          description: Minimum mmmmmmmmmmmmmmmmmmmmmm.
+        imageUrl:
+          type: string
+          example: https://company.dev/Apic.png
+          nullable: true
+          description: Item image nnnnnnnnnnnnnnnnnnnnnnnnn.
+        customData:
+          type: object
+          example: #TT 0711example
+            { item0706CDKey1: (key1Definition),
+              item0706CDKey2: (key2Definition) } 
+          description: >-
+            Defines xxxxxxxxxxxxxxx.
+          additionalProperties:
+            $ref: '#/components/schemas/KeyedCustomDataWithPermission'
+          nullable: true
+      additionalProperties: false
+
+
+    ItemResult:
+      type: object
+      description: Created item.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Item ID (UUID).
+        itemName:
+          type: string
+          nullable: true
+          example: item0706
+          description: Item name.
+        displayName:
+          type: string
+          nullable: true
+          example: item0706DisplayName  
+          description: Item xxxxxxxxxxxxxxxxxxxxxx.
+        externalId:
+          type: string
+          nullable: true
+          example: item0706ExtId
+          description: Item external ID.
+        minGameVersion:
+          type: string
+          example: 11112222-3333-4444-5555-666677778888
+          format: uuid
+          description: Minimum game version.
+        itemClassId:
+          type: string
+          example: 11112222-3333-4444-5555-666677778888
+          format: uuid
+          description: Item class ID.
+        consumable:
+          type: boolean
+          description: >-
+            True = ccccccccccccccccccccccc
+        consumableUsageCount:
+          type: integer
+          format: int64
+          description: How many ccccccccccccccccc.
+        consumableTimespan:
+          type: integer
+          example: 50000
+          format: int64
+          description: Minimum interval ccccccccccccccccccc.
+        imageUrl:
+          type: string
+          example: https://gs.dev/Apic.png
+          nullable: true
+          description: Item bbbbbbbbbbbbbbbbbbbbbbbbb.
+        customData:
+          type: object
+          example: #TT 0711example
+            { item0706CDKey1: (key1Definition),
+              item0706CDKey2: (key2Definition) } 
+          additionalProperties:
+            type: string
+          nullable: true
+          description: >-
+            Defines custom bbbbbbbbbbbbbbbbbbbbbbbbbbbb.
+      additionalProperties: false
+
+
+# =========================================================================  
+
+  securitySchemes:
+    OAuth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.com//oauth2/authorize
+          tokenUrl: https://auth.com//oauth2/token
+          scopes: {}
+security:
+  - OAuth: []
+
