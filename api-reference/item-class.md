@@ -1,3 +1,7 @@
+---
+description: Merged changed
+---
+
 # Item class
 
 {% swagger src="../.gitbook/assets/openapi (7).yaml" path="/item-class" method="post" %}
